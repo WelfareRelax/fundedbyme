@@ -59,10 +59,12 @@ public String InsertPosts(HttpServletRequest request, @RequestParam String from,
         return new ModelAndView("blog/posts")
                 .addObject("project", project)
                 .addObject("author", projectRepository.getAuthorOf(project));
-
     }
 
-
+    @RequestMapping(method = RequestMethod.GET, path = "/logIn")
+    public ModelAndView logIn() {
+        return new ModelAndView("blog/logIn");
+    }
 
 
 

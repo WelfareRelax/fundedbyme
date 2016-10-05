@@ -1,0 +1,27 @@
+#centrera {
+    text-align: center;
+    color: darkblue;
+}
+
+#centkurs{
+    text-align: center;
+    font-style: oblique;
+    color: darkblue;
+    font-size: 130%;
+}
+#investera{
+    font-size: x-large;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    border: 3px solid;
+    padding: 10px;
+}
+#investera1{
+    font-size: x-large;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    border: 3px solid;
+    padding: 10px;
+}
