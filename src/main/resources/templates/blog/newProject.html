@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>New Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div> Logged in as USERNAME</div>
+<h2> Create new project</h2>
+<h5>Fill in the details below to create a new project</h5>
+<form action="#" th:action="@{/newproject}" th:object="${project}" method="POST">
+    <div>test</div>
+<div>Project title: <input placeholder="Title..." th:field="*{title}"/></div>
+<div>Project description: <input placeholder="Description..." th:field="*{description}" /></div>
+<div>Requested amount: <input placeholder="Amount in SEK..." th:field="*{requestedAmount}"/> </div>
+<div> <input type="submit" value="Create project"/></div>
+<!--//add deadline in a calander?-->
+
+</form>
+</body>
+</html>

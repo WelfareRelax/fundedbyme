@@ -8,5 +8,6 @@ public interface ProjectRepository {
     User getAuthorOf(Project blog);
     List<Comment> getEntriesIn(Project blog, long pageId);
     Project postBlog(String title, long blogid);
+    Project newProject(Project project);
 
 }
