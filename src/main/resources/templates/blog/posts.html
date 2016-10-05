@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title th:text="${project.title}"></title>
+</head>
+<body>
+<h1 th:text="${project.title}" />
+<p>av <span th:text="${author.firstName} + ' &#x22;' + ${author.userName} + '&#x22; ' + ${author.lastName}" /></p>
+<article th:each="post : ${posts}">
+    <header>
+<!--        <h2>
+            <a th:href="@{./posts/{id}/(id=${post.id})}" th:text="${post.title}" />
+        </h2>-->
+        <span th:text="${post.title}" />
+
+
+        <p>
+            <span th:text="${author.userName}"></span>,
+<!--
+            <time th:datetime="${post.entryDate}" th:text="${post.entryDate.toLocalDate()} + ' ' + ${post.entryDate.toLocalTime()}"/>
+-->
+            <time th:datetime="${post.entryDate}" th:text="${post.entryDate.toLocalDate()} + ' ' + ${post.entryDate.toLocalTime()}"/>
+
+
+
+        </p>
+    </header>
+    <section>
+        <div th:text="${post.body}"></div>
+    </section>
+</article>
+
+
+  <a th:href="${project.id}">next 5</a>
+
+
+
+
+
+<form action="addposts" method="POST">
+    <input placeholder="Skriv det du vill logga" name="title"/>
+    <input type="submit"/>
+</form>
+
+
+</body>
+</html>

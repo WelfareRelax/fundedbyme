@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Demo app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<h1>Blogs</h1>
+<ul>
+    <li th:each="cust : ${customer}">
+<!--
+        <a th:href="@{./{id}/(id=${blog.id})}"  th:text="${blog.title}" />
+-->
+        <p th:text="${cust.customerName}" />
+
+    </li>
+</ul>
+    <a th:href="@{/Customer(page=${page}+1)}"  th:text="next" />
+
+    <a th:if="${page > 1}"   th:href="@{/Customer(page=${page}-1)}"  th:text="previous" />
+
+<ul class="pagination">
+<li th:if="${page} != ${index}" th:each="index : ${pageList}">
+
+    <a th:if="${page} != ${index}" th:href="@{./Customer(page=${index})}"  th:text="${index}" />
+
+</li>
+
+</ul>
+
+</body>
+</html>
