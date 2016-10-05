@@ -9,6 +9,7 @@
 <p>av <span th:text="${author.firstName} + ' &#x22;' + ${author.userName} + '&#x22; ' + ${author.lastName}" /></p>
 <article th:each="post : ${posts}">
     <header>
+        <div>hej</div>
 <!--        <h2>
             <a th:href="@{./posts/{id}/(id=${post.id})}" th:text="${post.title}" />
         </h2>-->
