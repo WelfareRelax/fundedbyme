@@ -49,7 +49,7 @@ public class SqlServerBlogrepository implements ProjectRepository {
             ps.setLong(2, blogid);
 
             int rs = ps.executeUpdate();
-            if(rs == 0){
+            if (rs == 0) {
 
                 System.out.println("error is 0");
             }
@@ -60,11 +60,10 @@ public class SqlServerBlogrepository implements ProjectRepository {
 
                 /*else return rsBlog(rs);*/
 
-    } catch (SQLException e) {
+        } catch (SQLException e) {
             throw new ProjectRepositoryException(e);
         }
     }
-
 
 
     @Override
@@ -90,7 +89,7 @@ public class SqlServerBlogrepository implements ProjectRepository {
 
                      "FROM [dbo].[Comments] p WHERE P.Blog_Id = ? AND p.Id < ? AND p.Id > ?  ORDER BY p.Date DESC")) {
             ps.setLong(1, blog.id);
-          ps.setLong(2, pageid);
+            ps.setLong(2, pageid);
             ps.setLong(3, pageid);
             try (ResultSet rs = ps.executeQuery()) {
                 List<Comment> posts = new ArrayList<>();
@@ -114,5 +113,20 @@ public class SqlServerBlogrepository implements ProjectRepository {
 
     private Project rsBlog(ResultSet rs) throws SQLException {
         return new Project(rs.getLong("id"), rs.getString("title"));
+    }
+
+    public Project newProject(Project project) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO [dbo].[Project] (Title, User_ID, Body, Requested) VALUES (?,?,?,?)")) {
+
+            ps.setString(1, project.title);
+            ps.setLong(2, project.userID);
+            ps.setString(3, project.description);
+            ps.setBigDecimal(4, project.requestedAmount);
+            int rs = ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new ProjectRepositoryException(e + "Trouble in newProject() in SQL-repo. Could probably not execute SQLupdate");
+        }
+        return project;
     }
 }
