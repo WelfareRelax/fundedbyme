@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body>
-<div>Välkommen till Sirars honungkälla!</div>
 <h1>Blogs</h1>
 <ul>
-    <li th:each="cust : ${customer1}">
+    <li th:each="cust : ${customer}">
 <!--
         <a th:href="@{./{id}/(id=${blog.id})}"  th:text="${blog.title}" />
 -->
